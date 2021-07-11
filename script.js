@@ -1,30 +1,37 @@
-const letterText = document.querySelector('#carta-texto');
 const letterBttn = document.querySelector('#criar-carta');
+const letterText = document.querySelector('#carta-texto');
 const misteryLetter = document.querySelector('#carta-gerada');
-const letterCounter = document.querySelector('carta-contador');
-const styleLetter = ['newspaper', 'magazine1', 'magazine2'];
-const sizeLetter = ['medium', 'big', 'reallybig'];
-const rotateLetter = ['rotateleft', 'rotateright'];
-const skewLetter = ['skewleft', 'skewright'];
+const wordCounter = document.querySelector('#carta-contador');
+const styleClasses = [
+  ['newspaper', 'magazine1', 'magazine2'],
+  ['medium', 'big', 'reallybig'],
+  ['rotateleft', 'rotateright'],
+  ['skewleft', 'skewright'],
+];
 
-function misteryLetterMkr() {
-  letterBttn.addEventListener('click', () => {
-    if (letterText.value === '') {
-      misteryLetter.innerText = 'Por favor, digite o conteúdo da carta.';
-    }
-    if (misteryLetter.innerHTML !== '') {
-      misteryLetter.innerHTML = '';
-    }
+letterBttn.addEventListener('click', () => {
+  if (misteryLetter.innerHTML !== '') {
+    misteryLetter.innerHTML = '';
+  }
+  if (letterText.value === '' || letterText.value === ' ') {
+    misteryLetter.innerText = 'Por favor, digite o conteúdo da carta.';
+  } else {
     const letterContent = letterText.value.split(' ');
     for (let index = 0; index < letterContent.length; index++) {
       const spanMkr = document.createElement('span');
       spanMkr.innerText = letterContent[index];
-      spanMkr.classList.add(styleLetter[Math.ceil(Math.random() * styleLetter.length - 1)]);
-      spanMkr.classList.add(sizeLetter[Math.ceil(Math.random() * styleLetter.length - 1)]);
-      spanMkr.classList.add(rotateLetter[Math.ceil(Math.random() * styleLetter.length - 1)]);
-      spanMkr.classList.add(skewLetter[Math.ceil(Math.random() * styleLetter.length - 1)]);
       misteryLetter.appendChild(spanMkr);
     }
-  });
-}
-misteryLetterMkr();
+  }
+  wordCounter.innerText = misteryLetter.children.length;
+});
+
+letterBttn.addEventListener('click', () => {
+  const spanTotal = document.getElementsByTagName('span');
+    for (let i = 0; i < spanTotal.length; i += 1) {
+      spanTotal[i].classList.add(styleClasses[0][Math.round(Math.random() * styleClasses[0].length)]);
+      spanTotal[i].classList.add(styleClasses[1][Math.round(Math.random() * styleClasses[1].length)]);
+      spanTotal[i].classList.add(styleClasses[2][Math.round(Math.random() * styleClasses[2].length)]);
+      spanTotal[i].classList.add(styleClasses[3][Math.round(Math.random() * styleClasses[3].length)]);
+    }
+});
