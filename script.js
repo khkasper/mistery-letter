@@ -5,7 +5,6 @@ const style = ['newspaper', 'magazine1', 'magazine2'];
 const size = ['medium', 'big', 'reallybig'];
 const rotate = ['rotateleft', 'rotateright'];
 const skew = ['skewleft', 'skewright'];
-const spanMkr = document.createElement('span');
 
 function misteryLetterMkr() {
   letterBttn.addEventListener('click', () => {
@@ -14,6 +13,7 @@ function misteryLetterMkr() {
     }
     const letterSize = letterText.value.split(' ');
     for (let index = 0; index < letterSize.length; index++) {
+      const spanMkr = document.createElement('span');
       spanMkr.innerText = letterSize[index];
       misteryLetter.appendChild(spanMkr);
     }
