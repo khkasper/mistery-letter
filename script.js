@@ -8,7 +8,7 @@ const skew = ['skewleft', 'skewright'];
 
 function misteryLetterMkr() {
   letterBttn.addEventListener('click', () => {
-    if (letterText.value === '') {
+    if (letterText.value === '' || letterText.value === ' ') {
       misteryLetter.innerText = 'Por favor, digite o conteúdo da carta.';
     }
     const letterSize = letterText.value.split(' ');
