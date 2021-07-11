@@ -2,12 +2,10 @@ const letterBttn = document.querySelector('#criar-carta');
 const letterText = document.querySelector('#carta-texto');
 const misteryLetter = document.querySelector('#carta-gerada');
 const wordCounter = document.querySelector('#carta-contador');
-const styleClasses = [
-  ['newspaper', 'magazine1', 'magazine2'],
-  ['medium', 'big', 'reallybig'],
-  ['rotateleft', 'rotateright'],
-  ['skewleft', 'skewright'],
-];
+const styleClass = ['newspaper', 'magazine1', 'magazine2'];
+const sizeClass = ['medium', 'big', 'reallybig'];
+const rotateClass = ['rotateleft', 'rotateright'];
+const skewClass = ['skewleft', 'skewright'];
 
 letterBttn.addEventListener('click', () => {
   if (misteryLetter.innerHTML !== '') {
@@ -17,21 +15,17 @@ letterBttn.addEventListener('click', () => {
     misteryLetter.innerText = 'Por favor, digite o conteúdo da carta.';
   } else {
     const letterContent = letterText.value.split(' ');
-    for (let index = 0; index < letterContent.length; index++) {
+    for (let index = 0; index < letterContent.length; index += 1) {
       const spanMkr = document.createElement('span');
       spanMkr.innerText = letterContent[index];
+      spanMkr.classList.add(styleClass[Math.round(Math.random() * 2)]);
+      spanMkr.classList.add(sizeClass[Math.round(Math.random() * 2)]);
+      spanMkr.classList.add(rotateClass[Math.round(Math.random() * 1)]);
+      spanMkr.classList.add(skewClass[Math.round(Math.random() * 1)]);
       misteryLetter.appendChild(spanMkr);
     }
   }
   wordCounter.innerText = misteryLetter.children.length;
 });
 
-letterBttn.addEventListener('click', () => {
-  const spanTotal = document.getElementsByTagName('span');
-    for (let i = 0; i < spanTotal.length; i += 1) {
-      spanTotal[i].classList.add(styleClasses[0][Math.round(Math.random() * styleClasses[0].length)]);
-      spanTotal[i].classList.add(styleClasses[1][Math.round(Math.random() * styleClasses[1].length)]);
-      spanTotal[i].classList.add(styleClasses[2][Math.round(Math.random() * styleClasses[2].length)]);
-      spanTotal[i].classList.add(styleClasses[3][Math.round(Math.random() * styleClasses[3].length)]);
-    }
-});
+// Agradecimento ao Thiago Carreira Vallim da Turma 09.
