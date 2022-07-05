@@ -6,7 +6,7 @@
 
 # Requisitos do projeto
 
-## Obrigatórios:
+## Obrigatórios
 
 - [x]  1 - Deve haver um `input` com o id=\"carta-texto\" onde a pessoa usuária poderá digitar o conteúdo da carta
 
@@ -40,7 +40,7 @@
 
 - [x]  16 - Adicione as classes de forma aleatória a fim de estilizar as palavras.
 
-## Bônus:
+## Bônus
 
 - [x]  17 - Com uma carta misteriosa gerada, adicione a possibilidade de alterar o estilo de uma palavra específica ao clicar nela
 
